@@ -1,0 +1,18 @@
+#!/bin/sh
+
+prepend_path_variable() {
+   export PATH="$1$(echo $PATH | sed "s|$1||")"
+}
+
+if [ -z "$BITBAKEDIR" ]; then
+   BITBAKEDIR="$BMETA/bitbake"
+fi
+
+export TEMPLATECONF=`readlink -f $BMETA/$TEMPLATECONF_LAYER/conf`
+export OE_BMETA=$(readlink -f $BMETA)
+
+. $BMETA/openembedded-core/oe-init-build-env
+
+unset BMETA
+export PATH=$OE_BMETA/scripts:$PATH
+

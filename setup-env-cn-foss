@@ -1,0 +1,15 @@
+#!/bin/sh
+
+THIS_SCRIPT=setup-env-cn-foss
+if [ -z "$ZSH_NAME" ] && [ $(basename -- "$0") = "$THIS_SCRIPT" ]; then
+   echo "Error: This script needs to be sourced. Please run as '. $0'"
+   exit 1
+fi
+unset THIS_SCRIPT
+
+if [ -z "$BMETA" ]; then
+   BMETA="distro"
+fi
+
+TEMPLATECONF_LAYER=meta-cn-foss
+. $BMETA/scripts/setup-env-oe-internal
