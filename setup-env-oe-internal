@@ -8,7 +8,7 @@ if [ -z "$BITBAKEDIR" ]; then
    BITBAKEDIR="$BMETA/bitbake"
 fi
 
-export TEMPLATECONF=`readlink -f $BMETA/$TEMPLATECONF_LAYER/conf`
+export TEMPLATECONF=`readlink -f $BMETA/$TEMPLATECONF_LAYER/conf/templates/default`
 export OE_BMETA=$(readlink -f $BMETA)
 
 . $BMETA/openembedded-core/oe-init-build-env
